@@ -47,7 +47,8 @@ common_configure_flags := \
             --with-http_ssl_module \
             --with-http_stub_status_module \
             --with-http_realip_module \
-            --with-http_auth_request_module
+            --with-http_auth_request_module \
+            --with-openssl=$(MODULESDIR)/openssl
 
 light_configure_flags := \
             $(common_configure_flags) \
@@ -130,7 +131,6 @@ custom_configure_flags := \
             --add-module=$(MODULESDIR)/redis2-nginx-module \
             --add-module=$(MODULESDIR)/ngx_devel_kit \
             --add-module=$(MODULESDIR)/set-misc-nginx-module \
-            --add-module=$(MODULESDIR)/ngx_brotli
 
 ee_configure_flags := \
             $(custom_configure_flags)

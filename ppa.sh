@@ -122,13 +122,11 @@ ppa_lib_echo "15/16 set-misc-nginx-module"
 git clone https://github.com/openresty/set-misc-nginx-module.git \
 || ppa_error "Unable to clone set-misc-nginx-module repo, exit status = " $?
 
-ppa_lib_echo "16/16 ngx_brotli"
-git clone https://github.com/eustas/ngx_brotli \
-|| ppa_error "Unable to clone ngx_brotli repo, exit status = " $?
+ppa_lib_echo "16/16 openssl 1.1.1b"
+{ curl -sL https://github.com/openssl/openssl/archive/OpenSSL_1_1_1b.tar.gz | \
+/bin/tar xzf - -C ~/PPA/nginx/modules; } || ppa_error "Unable to download openssl, exit status = " $?
 
-ppa_lib_echo "Updating ngx_brotli submodule"
-cd ngx_brotli || exit 1
-git submodule update --init --recursive || ppa_error "Unable to clone ngx_brotli repo, exit status = " $?
+mv ~/PPA/nginx/modules/openssl-OpenSSL_1_1_1b ~/PPA/nginx/modules/openssl
 
 cp -av ~/PPA/nginx/modules ~/PPA/nginx/nginx-${NGINX_VERSION}/debian/ \
 || ppa_error "Unable to copy modules files, exit status = " $?
