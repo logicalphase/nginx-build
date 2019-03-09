@@ -126,6 +126,10 @@ ppa_lib_echo "16/16 ngx_brotli"
 git clone https://github.com/eustas/ngx_brotli \
 || ppa_error "Unable to clone ngx_brotli repo, exit status = " $?
 
+ppa_lib_echo "Updating ngx_brotli submodule"
+cd ngx_brotli || exit 1
+git submodule update --init --recursive || ppa_error "Unable to clone ngx_brotli repo, exit status = " $?
+
 cp -av ~/PPA/nginx/modules ~/PPA/nginx/nginx-${NGINX_VERSION}/debian/ \
 || ppa_error "Unable to copy modules files, exit status = " $?
 
