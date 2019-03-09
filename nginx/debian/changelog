@@ -1,3 +1,9 @@
+nginx (1.14.2-1ppa~stable) xenial; urgency=medium
+
+  * Use new stable nginx source.
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Sat, 09 Mar 2019 04:49:00 +0530
+
 nginx (1.14.0-1ppa~stable) xenial; urgency=medium
 
   * Use new stable nginx source.
