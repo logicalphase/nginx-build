@@ -1,13 +1,12 @@
 Source: nginx
 Section: httpd
 Priority: optional
-Maintainer: Mriyam Tamuli <mbtamuli@gmail.com>
+Maintainer: Thomas SUCHON <thomas@virtubox.net>
 Build-Depends: autotools-dev,
                debhelper (>= 9),
                dh-systemd (>= 1.5),
                dpkg-dev (>= 1.15.5),
                libexpat-dev,
-               libgd-dev,
                libgeoip-dev,
                liblua5.1-0-dev | libluajit-5.1-2,
                libmhash-dev,
