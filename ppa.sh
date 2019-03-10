@@ -30,7 +30,7 @@ sudo apt-get -y install git dh-make devscripts debhelper dput gnupg-agent dh-sys
 
 # Lets Clone Launchpad repository
 ppa_lib_echo "Copy Launchpad Debian files, please wait"
-rm -rf /tmp/launchpad && rsync -az nginx /tmp/launchpad/ \
+rm -rf /tmp/launchpad ~/PPA && rsync -az nginx /tmp/launchpad/ \
 || ppa_error "Unable to clone launchpad repo, exit status = " $?
 
 # Configure NGINX PPA
