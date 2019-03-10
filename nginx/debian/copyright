@@ -71,6 +71,10 @@ Files: debian/modules/nginx-dav-ext-module/*
 Copyright: Arutyunyan Roman <arut@qip.ru>
 License: BSD-2-clause
 
+Files: debian/modules/nginx-vts-module/*
+Copyright:  YoungJoo.Kim <vozltx@gmail.com>
+License: BSD-2-clause
+
 Files: debian/*
 Copyright: 2007-2009, Fabio Tranchitella <kobold@debian.org>
            2008,      Jose Parrella <joseparrella@cantv.net>

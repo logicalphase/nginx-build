@@ -1,23 +1,25 @@
 #!/bin/bash
 
-
+if [ -z "$(command -v curl)" ]; then
+    apt-get update && apt-get install curl -y
+fi
 
 # Define NGINX version
-PACKAGE_NAME=$1
-NGINX_VERSION=$2
-EMAIL_ADDRESS=$3
+PACKAGE_NAME="nginx"
+NGINX_VERSION="$(curl -sL https://nginx.org/en/download.html 2>&1 | grep -E -o 'nginx\-[0-9.]+\.tar[.a-z]*' | awk -F "nginx-" '/.tar.gz$/ {print $2}' | sed -e 's|.tar.gz||g' | head -n 2 | grep 1.14 2>&1)"
+EMAIL_ADDRESS="$1"
 
 # Capture errors
 function ppa_error()
 {
-	echo "[ `date` ] $(tput setaf 1)$@$(tput sgr0)"
-	exit $2
+    echo "[ $(date) ] $(tput setaf 1)${*}$(tput sgr0)"
+    exit $2
 }
 
 # Echo function
 function ppa_lib_echo()
 {
-	echo $(tput setaf 4)$@$(tput sgr0)
+    echo "$(tput setaf 4)${*}$(tput sgr0)"
 }
 
 # Update/Install Packages
@@ -46,7 +48,7 @@ cd nginx-${NGINX_VERSION} \
 
 # Lets start building
 ppa_lib_echo "Execute: dh_make --single --copyright gpl --email $EMAIL_ADDRESS --createorig, please wait"
-dh_make --single --copyright gpl --email $EMAIL_ADDRESS --createorig \
+dh_make --single --copyright gpl --email "$EMAIL_ADDRESS" --createorig \
 || ppa_error "Unable to run dh_make command, exit status = " $?
 rm debian/*.ex debian/*.EX \
 || ppa_error "Unable to remove unwanted files, exit status = " $?
@@ -67,6 +69,7 @@ git clone https://github.com/openresty/headers-more-nginx-module.git \
 ppa_lib_echo "2/16 naxsi "
 git clone https://github.com/nbs-system/naxsi \
 || ppa_error "Unable to clone naxsi repo, exit status = " $?
+git -C naxsi checkout 0.56 || ppa_error "Unable to checkout naxsi release, exit status = " $?
 cp -av ~/PPA/nginx/modules/naxsi/naxsi_config/naxsi_core.rules ~/PPA/nginx/nginx-${NGINX_VERSION}/debian/conf/ \
 || ppa_error "Unable to copy naxsi files, exit status = " $?
 

@@ -1,7 +1,6 @@
 #!/usr/bin/make -f
 export DH_VERBOSE=1
 
-debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
 debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS)
 
 # export necessary perl hardenging flags
@@ -18,6 +17,11 @@ $(foreach flavour,$(FLAVOURS),$(eval BUILDDIR_$(flavour) = $(CURDIR)/debian/buil
 DEB_BUILD_ARCH ?=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
 ifeq ($(DEB_BUILD_ARCH),sparc)
     debian_cflags += -m32 -mcpu=ultrasparc
+endif
+ifeq ($(DEB_BUILD_ARCH),amd64)
+    debian_cflags:= -m64 -march=native -mtune=native -DTCP_FASTOPEN=23 -g -O3 -fstack-protector-strong -flto -ffat-lto-objects -fuse-ld=gold --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wimplicit-fallthrough=0 -fcode-hoisting -Wp,-D_FORTIFY_SOURCE=2 -gsplit-dwarf
+else
+    debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
 endif
 
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
