@@ -1,12 +1,7 @@
 #!/usr/bin/make -f
 export DH_VERBOSE=1
 
-debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS)
 
-# export necessary perl hardenging flags
-# see: src/http/modules/perl/Makefile.PL
-DEBIAN_NGINX_PERL_LDFLAGS:= $(debian_ldflags)
-export DEBIAN_NGINX_PERL_LDFLAGS
 
 FLAVOURS := full light extras custom ee
 
@@ -14,14 +9,23 @@ MODULESDIR = $(CURDIR)/debian/modules
 BASEDIR = $(CURDIR)
 $(foreach flavour,$(FLAVOURS),$(eval BUILDDIR_$(flavour) = $(CURDIR)/debian/build-$(flavour)))
 
+# export necessary perl hardenging flags
+# see: src/http/modules/perl/Makefile.PL
+ifeq ($(DEB_BUILD_ARCH),amd64)
+    debian_cflags:= -m64 -march=native -mtune=native -DTCP_FASTOPEN=23 -g -O3 -fstack-protector-strong -flto -ffat-lto-objects -fuse-ld=gold --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wimplicit-fallthrough=0 -fcode-hoisting -Wp,-D_FORTIFY_SOURCE=2 -gsplit-dwarf
+    debian_ldflags:= -lrt -Wl,-z,relro -Wl,-z,now -fPIC -flto -ffat-lto-objects
+    DEBIAN_NGINX_PERL_LDFLAGS:= $(shell dpkg-buildflags --get LDFLAGS)
+    export DEBIAN_NGINX_PERL_LDFLAGS
+else
+    debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
+    debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS)
+    DEBIAN_NGINX_PERL_LDFLAGS:= $(shell dpkg-buildflags --get LDFLAGS)
+    export DEBIAN_NGINX_PERL_LDFLAGS
+endif
+
 DEB_BUILD_ARCH ?=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
 ifeq ($(DEB_BUILD_ARCH),sparc)
     debian_cflags += -m32 -mcpu=ultrasparc
-endif
-ifeq ($(DEB_BUILD_ARCH),amd64)
-    debian_cflags:= -m64 -march=native -mtune=native -DTCP_FASTOPEN=23 -g -O3 -fstack-protector-strong -flto -ffat-lto-objects -fuse-ld=gold --param=ssp-buffer-size=4 -Wformat -Werror=format-security -Wimplicit-fallthrough=0 -fcode-hoisting -Wp,-D_FORTIFY_SOURCE=2 -gsplit-dwarf
-else
-    debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
 endif
 
 ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
