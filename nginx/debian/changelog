@@ -1,8 +1,14 @@
+nginx (1.14.2-4ppa~stable) xenial; urgency=medium
+
+  * update systemd service
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Mon, 11 Mar 2019 04:45:00 +0530
+ 
 nginx (1.14.2-3ppa~stable) xenial; urgency=medium
 
   * update nginx.conf
 
- -- Thomas SUCHON <thomas@virtubox.net>  Sat, 10 Mar 2019 23:45:00 +0530
+ -- Thomas SUCHON <thomas@virtubox.net>  Sun, 10 Mar 2019 23:45:00 +0530
 
 nginx (1.14.2-2ppa~stable) xenial; urgency=medium
 

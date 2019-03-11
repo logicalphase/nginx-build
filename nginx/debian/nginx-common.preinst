@@ -13,7 +13,6 @@ case "$1" in
   install)
     # If we are doing a fresh install, then these files are no longer needed.
     # They were around for a very short time and are best simply removed.
-    rm -f /etc/logrotate.d/nginx
     rm -f /etc/logrotate.d/nginx-full
     rm -f /etc/logrotate.d/nginx-light
     rm -f /etc/logrotate.d/nginx-extras
@@ -27,7 +26,6 @@ case "$1" in
       rm -f /etc/ufw/applications.d/nginx/ufw.profile
       rmdir /etc/ufw/applications.d/nginx
     fi
-    rm -f /etc/logrotate.d/nginx
     rm -f /etc/logrotate.d/nginx-full
     rm -f /etc/logrotate.d/nginx-light
     rm -f /etc/logrotate.d/nginx-extras
