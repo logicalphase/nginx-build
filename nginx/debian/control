@@ -11,6 +11,7 @@ Build-Depends: autotools-dev,
                liblua5.1-0-dev | libluajit-5.1-2,
                libmhash-dev,
                libpam0g-dev,
+               libjemalloc-dev,
                libgmp-dev,
                libpcre3-dev,
                libperl-dev,
@@ -212,7 +213,7 @@ Architecture: any
 Depends: nginx-common (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 Breaks: nginx (<< 1.4.5-1)
 Provides: httpd, httpd-cgi, nginx
-Conflicts: nginx-full, nginx-light, nginx-extras
+Conflicts: nginx-full, nginx-light, nginx-extras, nginx-ee
 Suggests: nginx-doc (= ${source:Version})
 Description: nginx web/proxy server with custom setup
  Nginx ("engine X") is a high-performance web and reverse proxy server
@@ -253,7 +254,7 @@ Architecture: any
 Depends: nginx-common (= ${source:Version}), ${misc:Depends}, ${shlibs:Depends}
 Breaks: nginx (<< 1.4.5-1)
 Provides: httpd, httpd-cgi, nginx
-Conflicts: nginx-full, nginx-light, nginx-extras
+Conflicts: nginx-full, nginx-light, nginx-extras, nginx-ee
 Suggests: nginx-doc (= ${source:Version})
 Description: nginx web/proxy server with custom setup
  Nginx ("engine X") is a high-performance web and reverse proxy server
