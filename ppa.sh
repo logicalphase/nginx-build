@@ -62,70 +62,68 @@ ppa_lib_echo "Downloading NGINX modules, please wait"
 mkdir ~/PPA/nginx/modules && cd ~/PPA/nginx/modules \
 || ppa_error "Unable to create ~/PPA/nginx/modules, exit status = " $?
 
-ppa_lib_echo "1/16 headers-more-nginx-module"
+ppa_lib_echo "1/15 headers-more-nginx-module"
 git clone https://github.com/openresty/headers-more-nginx-module.git \
 || ppa_error "Unable to clone headers-more-nginx-module repo, exit status = " $?
 
-ppa_lib_echo "2/16 naxsi "
-git clone https://github.com/nbs-system/naxsi \
-|| ppa_error "Unable to clone naxsi repo, exit status = " $?
-git -C naxsi checkout 0.56 || ppa_error "Unable to checkout naxsi release, exit status = " $?
-cp -av ~/PPA/nginx/modules/naxsi/naxsi_config/naxsi_core.rules ~/PPA/nginx/nginx-${NGINX_VERSION}/debian/conf/ \
-|| ppa_error "Unable to copy naxsi files, exit status = " $?
-
-ppa_lib_echo "3/16 nginx-auth-pam"
+ppa_lib_echo "2/15 nginx-auth-pam"
 git clone https://github.com/sto/ngx_http_auth_pam_module nginx-auth-pam  \
 || ppa_error "Unable to clone ngx_http_auth_pam_module repo, exit status = " $?
 
-ppa_lib_echo "4/16 nginx-cache-purge"
+ppa_lib_echo "3/15 nginx-cache-purge"
 git clone https://github.com/FRiCKLE/ngx_cache_purge.git nginx-cache-purge \
 || ppa_error "Unable to clone nginx-cache-purge repo, exit status = " $?
 
-ppa_lib_echo "5/16 nginx-dav-ext-module"
+cd nginx-cache-purge || exit 1
+patch -p1 < ~/data/nginx-build/patches/ngx_cache_purge.patch || ppa_error "Unable to patch nginx-cache-purge , exit status = " $?
+
+cd ~/PPA/nginx/modules || exit 1
+
+ppa_lib_echo "4/15 nginx-dav-ext-module"
 git clone https://github.com/arut/nginx-dav-ext-module.git \
 || ppa_error "Unable to clone nginx-dav-ext-module repo, exit status = " $?
 
-ppa_lib_echo "6/16 nginx-development-kit"
+ppa_lib_echo "5/15 nginx-development-kit"
 git clone https://github.com/simpl/ngx_devel_kit.git nginx-development-kit \
 || ppa_error "Unable to clone nginx-development-kit repo, exit status = " $?
 
-ppa_lib_echo "7/16  nginx-echo"
+ppa_lib_echo "6/15  nginx-echo"
 git clone https://github.com/agentzh/echo-nginx-module.git nginx-echo \
 || ppa_error "Unable to clone nginx-echo repo, exit status = " $?
 
-ppa_lib_echo "8/16 nginx-upstream-fair"
+ppa_lib_echo "7/15 nginx-upstream-fair"
 git clone https://github.com/itoffshore/nginx-upstream-fair.git \
 || ppa_error "Unable to clone nginx-upstream-fair repo, exit status = " $?
 
-ppa_lib_echo "9/16 ngx_http_substitutions_filter_module"
+ppa_lib_echo "8/15 ngx_http_substitutions_filter_module"
 git clone https://github.com/yaoweibin/ngx_http_substitutions_filter_module.git \
 || ppa_error "Unable to clone ngx_http_substitutions_filter_module repo, exit status = " $?
 
-ppa_lib_echo "10/16 memc-nginx-module"
+ppa_lib_echo "9/15 memc-nginx-module"
 git clone https://github.com/openresty/memc-nginx-module.git \
 || ppa_error "Unable to clone memc-nginx-module repo, exit status = " $?
 
-ppa_lib_echo "11/16 srcache-nginx-module"
+ppa_lib_echo "10/15 srcache-nginx-module"
 git clone https://github.com/openresty/srcache-nginx-module.git \
 || ppa_error "Unable to clone srcache-nginx-module repo, exit status = " $?
 
-ppa_lib_echo "12/16 HttpRedisModule"
+ppa_lib_echo "11/15 HttpRedisModule"
 git clone https://github.com/EasyEngine/ngx_http_redis.git HttpRedisModule \
 || ppa_error "Unable to clone nginx_http_redis_module repo, exit status = " $?
 
-ppa_lib_echo "13/16 redis2-nginx-module"
+ppa_lib_echo "12/15 redis2-nginx-module"
 git clone https://github.com/openresty/redis2-nginx-module.git \
 || ppa_error "Unable to clone redis2-nginx-module repo, exit status = " $?
 
-ppa_lib_echo "14/16 ngx_devel_kit-module"
+ppa_lib_echo "13/15 ngx_devel_kit-module"
 git clone https://github.com/simpl/ngx_devel_kit.git \
 || ppa_error "Unable to clone ngx_devel_kit-module repo, exit status = " $?
 
-ppa_lib_echo "15/16 set-misc-nginx-module"
+ppa_lib_echo "14/15 set-misc-nginx-module"
 git clone https://github.com/openresty/set-misc-nginx-module.git \
 || ppa_error "Unable to clone set-misc-nginx-module repo, exit status = " $?
 
-ppa_lib_echo "16/16 nginx-module-vts "
+ppa_lib_echo "15/15 nginx-module-vts "
 git clone https://github.com/vozlt/nginx-module-vts.git || ppa_error "Unable to download nginx-module-vts, exit status = " $?
 
 cp -av ~/PPA/nginx/modules ~/PPA/nginx/nginx-${NGINX_VERSION}/debian/ \

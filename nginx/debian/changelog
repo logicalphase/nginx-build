@@ -1,3 +1,9 @@
+nginx (1.14.2-5ppa~stable) xenial; urgency=medium
+
+  * remove outdated configuration
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Wed, 13 Mar 2019 17:29:00 +0530
+
 nginx (1.14.2-4ppa~stable) xenial; urgency=medium
 
   * update systemd service

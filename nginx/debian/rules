@@ -3,8 +3,8 @@ export DH_VERBOSE=1
 
 # export necessary perl hardenging flags
 # see: src/http/modules/perl/Makefile.PL
-debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
-debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS)
+debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) -fPIC $(shell dpkg-buildflags --get CPPFLAGS)
+debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS) -fPIC
 
 DEBIAN_NGINX_PERL_LDFLAGS:= $(shell dpkg-buildflags --get LDFLAGS)
 export DEBIAN_NGINX_PERL_LDFLAGS
@@ -19,9 +19,6 @@ DEB_BUILD_ARCH ?=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
 
 ifeq ($(DEB_BUILD_ARCH),sparc)
     debian_cflags += -m32 -mcpu=ultrasparc
-endif
-ifeq ($(DEB_BUILD_ARCH),amd64)
-    debian_cflags += -m64 -march=native -mtune=native
 endif
 
 
