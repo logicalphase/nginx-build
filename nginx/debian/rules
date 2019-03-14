@@ -42,6 +42,7 @@ common_configure_flags := \
             --http-proxy-temp-path=/var/lib/nginx/proxy \
             --http-scgi-temp-path=/var/lib/nginx/scgi \
             --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
+            --build='WordOps Nginx-wo' \
             --with-debug \
             --with-pcre-jit \
             --with-file-aio \
