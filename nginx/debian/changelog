@@ -1,3 +1,10 @@
+
+nginx (1.14.2-8ppa~stable) xenial; urgency=medium
+
+  * fix nginx ssl_ecdh_curve
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Sun, 18 Mar 2019 04:04:00 +0530
+
 nginx (1.14.2-7ppa~stable) xenial; urgency=medium
 
   * add nginx brotli

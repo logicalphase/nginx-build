@@ -75,6 +75,12 @@ Files: debian/modules/nginx-vts-module/*
 Copyright:  YoungJoo.Kim <vozltx@gmail.com>
 License: BSD-2-clause
 
+Files: debian/modules/ngx_brotli/*
+Copyright:  2002-2015 Igor Sysoev
+            2011-2015 Nginx, Inc.
+            2015 Google Inc.
+License: BSD-2-clause
+            
 Files: debian/*
 Copyright: 2007-2009, Fabio Tranchitella <kobold@debian.org>
            2008,      Jose Parrella <joseparrella@cantv.net>

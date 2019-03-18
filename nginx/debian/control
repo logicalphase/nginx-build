@@ -96,7 +96,7 @@ Description: nginx web/proxy server (standard version)
  Split Clients, SSI, Upstream, User ID, UWSGI.
  .
  OPTIONAL HTTP MODULES: Addition, Auth Request, Debug, GeoIP, Gzip
- Precompression, HTTP Sub, Image Filter, IPv6, Real IP, Spdy, SSL, Stub Status,
+ Precompression, HTTP Sub, IPv6, Real IP, Spdy, SSL, Stub Status,
  Substitution, WebDAV, XSLT.
  .
  MAIL MODULES: Mail Core, IMAP, POP3, SMTP, SSL.
@@ -183,14 +183,14 @@ Description: nginx web/proxy server (extended version)
  Split Clients, SSI, Upstream, User ID, UWSGI.
  .
  OPTIONAL HTTP MODULES: Addition, Auth Request, Debug, Embedded Perl, FLV,
- GeoIP, Gzip Precompression, Image Filter, IPv6, MP4, Random Index, Real IP,
+ GeoIP, Gzip Precompression, IPv6, MP4, Random Index, Real IP,
  Secure Link, Spdy, SSL, Stub Status, Substitution, WebDAV, XSLT.
  .
  MAIL MODULES: Mail Core, IMAP, POP3, SMTP, SSL.
  .
  THIRD PARTY MODULES: Auth PAM, Chunkin, DAV Ext, Echo, Embedded Lua,
  Fancy Index, HttpHeadersMore, HTTP Substitution Filter, http push,
- Nginx Development Kit, Upload Progress, Upstream Fair Queue.
+ Nginx Development Kit, Upload Progress, Upstream Fair Queue, Brotli, VTS.
 
 Package: nginx-extras-dbg
 Architecture: any
@@ -228,11 +228,11 @@ Description: nginx web/proxy server with custom setup
  Split Clients, SSI, Upstream, User ID, UWSGI.
  .
  OPTIONAL HTTP MODULES: Addition, Auth Request, Debug, GeoIP, Gzip
- Precompression, HTTP Sub, Image Filter, IPv6, Real IP, Spdy, SSL, Stub Status,
+ Precompression, HTTP Sub, IPv6, Real IP, Spdy, SSL, Stub Status,
  Substitution, WebDAV, XSLT.
  .
  THIRD PARTY MODULES: Auth PAM, DAV Ext, Echo, HTTP Substitution Filter,
- Upstream Fair Queue, Headers More, Cache Purge.
+ Upstream Fair Queue, Headers More, Cache Purge, Brotli, VTS.
 
 Package: nginx-custom-dbg
 Architecture: any
@@ -269,11 +269,11 @@ Description: nginx web/proxy server with custom setup
  Split Clients, SSI, Upstream, User ID, UWSGI.
  .
  OPTIONAL HTTP MODULES: Addition, Auth Request, Debug, GeoIP, Gzip
- Precompression, HTTP Sub, Image Filter, IPv6, Real IP, Spdy, SSL, Stub Status,
+ Precompression, HTTP Sub, IPv6, Real IP, Spdy, SSL, Stub Status,
  Substitution, WebDAV, XSLT.
  .
  THIRD PARTY MODULES: Auth PAM, DAV Ext, Echo, HTTP Substitution Filter,
- Upstream Fair Queue, Headers More, Cache Purge.
+ Upstream Fair Queue, Headers More, Cache Purge, Brotli, VTS.
 
 Package: nginx-wo-dbg
 Architecture: any
