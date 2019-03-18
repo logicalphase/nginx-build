@@ -1,3 +1,9 @@
+nginx (1.14.2-7ppa~stable) xenial; urgency=medium
+
+  * add nginx brotli
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Sun, 17 Mar 2019 15:27:00 +0530
+
 nginx (1.14.2-5ppa~stable) xenial; urgency=medium
 
   * remove outdated configuration
@@ -1819,4 +1825,3 @@ nginx (0.4.2-1) unstable; urgency=low
   * Tweaked the configuration file and the path handling for Debian.
 
  -- Jose Parrella <joseparrella@cantv.net>  Thu, 14 Sep 2006 11:40:20 -0400
-

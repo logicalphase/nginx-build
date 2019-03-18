@@ -130,7 +130,8 @@ custom_configure_flags := \
             --add-module=$(MODULESDIR)/redis2-nginx-module \
             --add-module=$(MODULESDIR)/ngx_devel_kit \
             --add-module=$(MODULESDIR)/set-misc-nginx-module \
-            --add-module=$(MODULESDIR)/nginx-module-vts
+            --add-module=$(MODULESDIR)/nginx-module-vts \
+            --add-module=$(MODULESDIR)/ngx_brotli
 
 wo_configure_flags := \
             $(custom_configure_flags)
