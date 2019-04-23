@@ -1,3 +1,9 @@
+nginx (1.16.0-1ppa~stable) xenial; urgency=medium
+
+  * Use new stable nginx source
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Wed, 24 Apr 2019 01:03:00 +0530
+
 nginx (1.14.2-9ppa~stable) xenial; urgency=medium
 
   * fix nginx.conf with wordops info
