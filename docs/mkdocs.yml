@@ -1,0 +1,52 @@
+site_name: Nginx debian package build Documentation
+copyright: 'Copyright &copy; 2019 WordOps - <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img style="display:inline;" alt="Licence Creative Commons" style="border-width:0" src="https://docs.wordops.net/images/80x15.png" /></a>'
+repo_url: https://github.com/WordOps/nginx-build/
+edit_uri: "https://github.com/WordOps/nginx-build/edit/master/docs/"
+remote_branch: gh-pages
+
+theme:
+  name: 'material'
+  language: 'en'
+  highlightjs: true
+  palette:
+    primary: 'light-blue'
+    accent: 'indigo'
+
+
+markdown_extensions:
+  # Code highlighting in ``` ``` blocks
+  - codehilite:
+      guess_lang: true
+# Table of Contents
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+# block div
+  - admonition
+  - meta
+
+extra:
+  social:
+    - type: globe
+      link: https://wordops.net
+    - type: github-alt
+      link: https://github.com/WordOps
+    - type: twitter
+      link: https://twitter.com/WordOps_
+    - type: slack
+      link: https://community.wordops.io/slack
+    - type: comments
+      link: https://community.wordops.net
