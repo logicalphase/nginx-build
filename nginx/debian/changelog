@@ -1,3 +1,15 @@
+nginx (1.16.1-1ppa~stable~ubuntu16.04.2) xenial; urgency=medium
+
+  * Update to Nginx 1.16.1 in response to HTTP/2 vulnerabilities
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Fri, 23 Aug 2019 01:03:00 +0530
+
+nginx (1.16.1-1ppa~stable~ubuntu16.04.1) xenial; urgency=medium
+
+  * Update to Nginx 1.16.1 in response to HTTP/2 vulnerabilities
+
+ -- Thomas SUCHON <thomas@virtubox.net>  Wed, 24 Apr 2019 01:03:00 +0530
+
 nginx (1.16.0-1ppa~stable) xenial; urgency=medium
 
   * Use new stable nginx source

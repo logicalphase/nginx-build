@@ -3,8 +3,8 @@ export DH_VERBOSE=1
 
 # export necessary perl hardenging flags
 # see: src/http/modules/perl/Makefile.PL
-debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) -fPIC $(shell dpkg-buildflags --get CPPFLAGS)
-debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS) -fPIC
+debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) -fPIC -flto -ffat-lto-objects $(shell dpkg-buildflags --get CPPFLAGS)
+debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS) -fPIC -flto -ffat-lto-objects
 
 DEBIAN_NGINX_PERL_LDFLAGS:= $(shell dpkg-buildflags --get LDFLAGS)
 export DEBIAN_NGINX_PERL_LDFLAGS
@@ -48,9 +48,11 @@ common_configure_flags := \
             --with-file-aio \
             --with-threads \
             --with-http_ssl_module \
+            --with-http_v2_module \
             --with-http_stub_status_module \
             --with-http_realip_module \
-            --with-http_auth_request_module
+            --with-http_auth_request_module \
+            --with-openssl-opt="zlib enable-ec_nistp_64_gcc_128 enable-tls1_3 no-ssl3-method -fPIC"
 
 light_configure_flags := \
             $(common_configure_flags) \
@@ -70,13 +72,10 @@ light_configure_flags := \
 full_configure_flags := \
             $(common_configure_flags) \
             --with-http_addition_module \
-            --with-http_dav_module \
             --with-http_geoip_module \
             --with-http_gzip_static_module \
-            --with-http_v2_module \
             --with-http_sub_module \
             --with-http_xslt_module \
-            --with-mail \
             --with-mail_ssl_module \
             --add-module=$(MODULESDIR)/nginx-auth-pam \
             --add-module=$(MODULESDIR)/nginx-dav-ext-module \
@@ -95,7 +94,6 @@ extras_configure_flags := \
             --with-http_perl_module \
             --with-http_random_index_module \
             --with-http_secure_link_module \
-            --with-http_v2_module \
             --with-http_sub_module \
             --with-http_xslt_module \
             --with-mail \
@@ -115,9 +113,9 @@ custom_configure_flags := \
             --with-http_geoip_module \
             --with-http_gzip_static_module \
             --with-http_mp4_module \
-            --with-http_v2_module \
             --with-http_sub_module \
             --with-http_xslt_module \
+            --without-http_memcached_module \
             --add-module=$(MODULESDIR)/headers-more-nginx-module \
             --add-module=$(MODULESDIR)/nginx-auth-pam \
             --add-module=$(MODULESDIR)/nginx-cache-purge \
